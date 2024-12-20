@@ -1,15 +1,23 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
 app.post("/", (req, res) => {
-  res.send("Thank you for posting something");
+  // console.log(req.body);
+  // console.log(req.body.num1);
+  // console.log(req.body.num2);
+  // res.send("Thank you for posting something");
+
+  const num1 = req.body.num1; // get value of input1
+  const num2 = req.body.num2; // get value of input2
+  const result = Number(num1) + Number(num2);
+  res.send("The calculation result is : " + result); // display the sum of num1 and num2.
 });
 
 app.listen(3000, () => {
