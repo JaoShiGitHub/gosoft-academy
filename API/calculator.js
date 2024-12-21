@@ -43,6 +43,16 @@ app.get("/kanye", async (req, res) => {
   }
 });
 
+app.get("/java", async (req, res) => {
+  try {
+    const url = "https://v2.jokeapi.dev/joke/programming"; // Replace with the URL you want to fetch data from
+    const response = await axios.get(url);
+    res.json(response.data); // Send the fetched data as a response
+  } catch (error) {
+    res.status(500).send("Error fetching data");
+  }
+});
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
