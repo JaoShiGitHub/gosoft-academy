@@ -20,6 +20,18 @@ app.post("/", (req, res) => {
   res.send("The calculation result is : " + result); // display the sum of num1 and num2.
 });
 
+app.get("/bmiCalculator", (req, res) => {
+  res.send("Hello World");
+  res.sendFile(__dirname + "/bmiCalculator.html");
+});
+
+app.post("/bmiCalculator", (req, res) => {
+  const weight = Number(req.body.weight);
+  const height = Number(req.body.height);
+  const BMI = Math.round(weight / (height * height));
+  res.send("คุณมีค่า BMI = " + BMI + " , คุณอยู่ในเกณฑ์ = " + description);
+});
+
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
 });
