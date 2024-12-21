@@ -1,4 +1,5 @@
 const express = require("express");
+const axios = require("axios");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -30,6 +31,16 @@ app.post("/bmiCalculator", (req, res) => {
   const height = Number(req.body.height);
   const BMI = Math.round(weight / (height * height));
   res.send("คุณมีค่า BMI = " + BMI);
+});
+
+app.get("/kanye", async (req, res) => {
+  try {
+    const url = "https://api.kanye.rest/"; // Replace with the URL you want to fetch data from
+    const response = await axios.get(url);
+    res.json(response.data); // Send the fetched data as a response
+  } catch (error) {
+    res.status(500).send("Error fetching data");
+  }
 });
 
 app.listen(3000, () => {
