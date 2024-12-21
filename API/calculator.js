@@ -21,7 +21,7 @@ app.post("/", (req, res) => {
 });
 
 app.get("/bmiCalculator", (req, res) => {
-  res.send("Hello World");
+  // res.send("Hello World");
   res.sendFile(__dirname + "/bmiCalculator.html");
 });
 
@@ -29,7 +29,7 @@ app.post("/bmiCalculator", (req, res) => {
   const weight = Number(req.body.weight);
   const height = Number(req.body.height);
   const BMI = Math.round(weight / (height * height));
-  res.send("คุณมีค่า BMI = " + BMI + " , คุณอยู่ในเกณฑ์ = " + description);
+  res.send("คุณมีค่า BMI = " + BMI);
 });
 
 app.listen(3000, () => {
